@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/artist.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Info about {{.Name}}</title>
+</head>
+<body>
+        <h1 class="logo">{{.Name}}</h1>
+   
+    <div class="single">
+        <img src={{.Image}}>
+    
+    <h2>Members</h2>
+    {{ range .Members }}
+    <p>{{ . }}</p>
+    {{end}}
+    <b>Creation Date:</b>
+    <p>{{ .CreationDate }}</p>
+    <b>First Album:</b>
+    <p>{{.FirstAlbum}}</p>
+    <b>Concert Dates:</b>
+    {{ range $location, $date := .Relations.DateLocation }}
+    <p>{{ $location }} - {{range $date }} {{ . }} {{ end }} </p>
+    {{ end }}
+    <a href="/">Close</a>
+</div>
+</body>
+</html>
